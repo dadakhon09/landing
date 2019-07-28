@@ -14,9 +14,9 @@ def sendmail(request):
 	subject = 'test title'
 	message = 'something new'
 	from_email = settings.EMAIL_HOST_USER
-	recipient_list = ['fprotimaru@gmail.com',]
-	send_mail(subject, message, from_email, recipient_list)
-	return HttpResponse()
+	recipient_list = ['ortikovaadiba13@gmail.com','odadaxon27@mail.ru']
+	send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+	return HttpResponse('Your message has been successfully sent')
 
 class StartupCreateAPIView(generics.CreateAPIView):
 	serializer_class = StartupCreateSerializer
