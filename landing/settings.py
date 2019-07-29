@@ -91,13 +91,23 @@ WSGI_APPLICATION = 'landing.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'bbsydljiuqteeyawp58n-postgresql.services.clever-cloud.com',
+        'NAME': 'bbsydljiuqteeyawp58n',
+        'USER': 'u1czhnpifeqn0es6ayj8',
+        'PASSWORD': 'GvS2ek1Mt0NoCVwWmqMF',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -143,19 +153,8 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587 #2525
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smartstartcommunity@gmail.com'
 EMAIL_HOST_PASSWORD = 'u998470273'
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# SERVER_MAIL = EMAIL_HOST_USER
-
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'odadaxon99@gmail.com'
-# EMAIL_HOST_PASSWORD = 'u998470273'
-# EMAIL_USE_TLS = True
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# EMAIL_FROM = EMAIL_HOST_USER
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
