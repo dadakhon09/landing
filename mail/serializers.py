@@ -30,3 +30,4 @@ class StartupCreateSerializer(serializers.ModelSerializer):
 		msg.attach_file(os.path.join(BASE_DIR, f'{s.file}'))
 		msg.send()
 		return s
+		
