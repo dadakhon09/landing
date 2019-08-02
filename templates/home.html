@@ -5,16 +5,42 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-    h1 {
+        h1 {
         text-align: center;
         color: red;
         font-size: 250px;
     }
     </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
     <h1>IWLADI</h1>
+   <!-- <form method="POST">
+    <input name="csrfToken" value="{{csrf_token}}" type="hidden">
+    <input type="submit" id="birnarsa" data-url="http://localhost:8000/auth/google/" value="">
+</form>
 </body>
+<script>
+$('#birnarsa').click(function(e) {
+    e.preventDefault()
+    let f = new FormData()
+
+    f.append('csrfmiddlewaretoken', $('input[name="csrfmiddlewaretoken"]').val());
+    $.ajax({
+        url: $(this).data('url'),
+        method: "POST",
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            alert('1');
+        }
+        error: alert(0),
+        body: {
+            "access_token": "ya29.GltYByNCfEE3VwuyvftzIFi4TKasH8mHZlk8gzD76GHfDs2SXERQWSdpDmJj8pL-7CzPOeFnmbTz1sQUoC39_je_A24dtuQbcGnZfm64Su-iltKwY031ueJuYUcD"
+        }
+    });
+});
+</script> -->
 
 </html>

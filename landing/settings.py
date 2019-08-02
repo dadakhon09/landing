@@ -37,12 +37,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
-    'rest_framework',
     'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
 
     'mail',
+    'userprofile',
+    'authentication',
 ]
+
+# AUTH_USER_MODEL = 'userprofile.User'
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'userprofile.serializers.UserSerializer',
+}
+
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -53,6 +73,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
+    #'social_django.middleware.SocialAuthExceptionMiddleware', #social
 ]
 
 ROOT_URLCONF = 'landing.urls'
@@ -68,10 +91,24 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                #'social_django.context_processors.backends',  #social
+                #'social_django.context_processors.login_redirect', #social
             ],
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    )
+}
+
+REST_USE_JWT = True
 
 CORS_ALLOW_METHODS = [
     '*'
@@ -108,6 +145,24 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+
+    # Others auth providers (e.g. Google, OpenId, etc)
+    
+
+    # Facebook OAuth2
+    #'social_core.backends.facebook.FacebookAppOAuth2',
+    #'social_core.backends.facebook.FacebookOAuth2',
+
+    # django-rest-framework-social-oauth2
+    #'rest_framework_social_oauth2.backends.DjangoOAuth2',
+
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -158,3 +213,68 @@ EMAIL_HOST_USER = 'smartstartcommunity@gmail.com'
 EMAIL_HOST_PASSWORD = 'u998470273'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
+# SOCIAL_AUTH_FACEBOOK_KEY = 428456044438034
+# SOCIAL_AUTH_FACEBOOK_SECRET = '1d0c88eb142c41fe3bb574d083b000c1'
+# SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/login/'
+# SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+# FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+# SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
+# SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
+
+
+# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+#     'fields':'id, name, email'
+# }
+
+# SOCIAL_AUTH_PIPELINE = (
+# 'social_core.pipeline.social_auth.social_details',
+# 'social_core.pipeline.social_auth.social_uid',
+# 'social_core.pipeline.social_auth.auth_allowed',
+# 'social_core.pipeline.social_auth.social_user',
+# 'social_core.pipeline.user.get_username',
+# 'social_core.pipeline.social_auth.associate_by_email',
+# 'social_core.pipeline.user.create_user',
+# 'social_core.pipeline.social_auth.associate_user',
+# 'social_core.pipeline.social_auth.load_extra_data',
+# 'social_core.pipeline.user.user_details', )
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'rerequest'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'birthday',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v4.0',
+    }
+}
+ACCOUNT_ADAPTER = 'apps.authentication.allauth.AllAuthAccountAdapter'
+LOGIN_REDIRECT_URL = '/'
+# SOCIALACCOUNT_AUTO_SIGNUP = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# FACEBOOK
+FACEBOOK_CLIENT_ID = '428456044438034'
+FACEBOOK_CLIENT_SECRET = '1d0c88eb142c41fe3bb574d083b000c1'
+FACEBOOK_REDIRECT_URI = '/'
+
+# GOOGLE
+
+# TWITTER

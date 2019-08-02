@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 	path('', include('mail.urls')),
+    path('user/', include('userprofile.urls')),
+    path('auth/', include('authentication.urls')),
+    path('facebook/', include('facebook.urls')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
