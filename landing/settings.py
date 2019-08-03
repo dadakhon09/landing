@@ -263,7 +263,7 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'EXCHANGE_TOKEN': True,
         'VERIFIED_EMAIL': False,
-        'VERSION': 'v4.0',
+        'VERSION': 'v6.0',
     }
 }
 ACCOUNT_ADAPTER = 'apps.authentication.allauth.AllAuthAccountAdapter'
