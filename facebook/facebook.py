@@ -11,7 +11,7 @@ def fb_login_url():
     params = {
         'client_id': '428456044438034',
         'client_secret': '1d0c88eb142c41fe3bb574d083b000c1',
-        'redirect_uri': 'https://google.com',
+        'redirect_uri': 'http://localhost:8000/',
         'response_type': 'code',
     }
     url = 'https://www.facebook.com/dialog/oauth'
@@ -43,7 +43,7 @@ def fb(request):
         return HttpResponseRedirect('/')
     return HttpResponse(f'<a href="{fb_url}">facebook</a>')
 
-
+                    
 def create_user_fb(data):
     """
     User emailga tekshiriladi agar mavjud bo`lmasa yangi User yaratiladi
