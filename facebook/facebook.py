@@ -9,14 +9,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 def fb_login_url():
     params = {
-        'client_id': '1963632580549769',
-        'client_secret': '3fc96c5eb7d2a67f6a76f16c28a201c8',
-        'redirect_uri': 'http://pc.muic.uz/auth/fb',
+        'client_id': '428456044438034',
+        'client_secret': '1d0c88eb142c41fe3bb574d083b000c1',
+        'redirect_uri': 'https://google.com',
         'response_type': 'code',
     }
     url = 'https://www.facebook.com/dialog/oauth'
     return url, params
-
 
 def fb(request):
     import urllib.parse

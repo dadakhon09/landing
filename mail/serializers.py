@@ -11,8 +11,6 @@ class FilesSerializer(serializers.ModelSerializer):
 		model = Files
 		fields = ('id', 'file')
 
- 
-
 class StartupListSerializer(serializers.ModelSerializer):
 	files = FilesSerializer(many=True)
 	class Meta:

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'sslserver',
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
@@ -266,14 +267,14 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 ACCOUNT_ADAPTER = 'apps.authentication.allauth.AllAuthAccountAdapter'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'https://google.com/'
 # SOCIALACCOUNT_AUTO_SIGNUP = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # FACEBOOK
 FACEBOOK_CLIENT_ID = '428456044438034'
 FACEBOOK_CLIENT_SECRET = '1d0c88eb142c41fe3bb574d083b000c1'
-FACEBOOK_REDIRECT_URI = '/'
+FACEBOOK_REDIRECT_URI = 'https://google.com/'
 
 # GOOGLE
 
